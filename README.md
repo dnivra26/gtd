@@ -1,0 +1,2 @@
+CREATE USER gtd WITH PASSWORD 'password';
+CREATE DATABASE gtd OWNER gtd;
