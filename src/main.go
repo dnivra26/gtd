@@ -1,6 +1,9 @@
 package main
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -13,7 +16,7 @@ type ToDo struct {
 }
 
 func main() {
-	dbDSN := "user=gtd password=password DB.name=gtd port=5432 sslmode=disable"
+	dbDSN := fmt.Sprintf("user=%s password=%s DB.name=gtd port=5432 sslmode=disable", os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"))
 	db, err := gorm.Open("postgres", dbDSN)
 	if err != nil {
 		panic("failed to connect database")
